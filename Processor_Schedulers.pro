@@ -8,14 +8,13 @@ CONFIG += c++11
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-INCLUDEPATH += Headers/
+INCLUDEPATH += \
+    Headers/ \
+    Headers/Algorithms/
 
-SOURCES += \
-    Sources/main.cpp \
-    Sources/mainwindow.cpp
+SOURCES += $$files("Sources/*.cpp", true)
 
-HEADERS += \
-    Headers/mainwindow.h
+HEADERS += $$files("Headers/*.h", true)
 
 FORMS += \
     mainwindow.ui
