@@ -1,8 +1,5 @@
 #ifndef PREEMPTIVE_H
 #define PREEMPTIVE_H
-
-#endif // PREEMPTIVE_H
-
 #include "Algorithm.h"
 
 class Preemptive : public Algorithm {
@@ -14,3 +11,6 @@ protected:
 public:
     TimeLine getTimeLine(vector<Process> processes);
 };
+
+#endif // PREEMPTIVE_H
+
