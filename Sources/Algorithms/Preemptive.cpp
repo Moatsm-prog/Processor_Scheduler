@@ -1,9 +1,9 @@
-#include"Algorithm.h"
+#include"Preemptive.h"
 #include<vector>
 #include<QtGlobal>
 
 
-TimeLine Preemptive::getTimeLine(vector<Process> processes, float quantumTime = 0) {
+TimeLine Preemptive::getTimeLine(vector<Process> processes) {
     TimeLine schedule = *(new TimeLine());
     int len = processes.size();
     int remaining = len;

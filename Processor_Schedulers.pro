@@ -14,7 +14,8 @@ INCLUDEPATH += \
 
 SOURCES += $$files("Sources/*.cpp", true)
 
-HEADERS += $$files("Headers/*.h", true)
+HEADERS += $$files("Headers/*.h", true) \
+    Headers/Algorithms/Preemptive.h
 
 FORMS += \
     mainwindow.ui
