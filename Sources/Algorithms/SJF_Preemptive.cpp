@@ -1,15 +1,13 @@
-#include "Priority_Preemptive.h"
+#include "SJF_Preemptive.h"
 
-void Priority_Preemptive::addProcess(Process p){
+void SJF_Preemptive::addProcess(Process p){
     jobQueue.push(p);
 }
-
-Process Priority_Preemptive::getTopProcess(){
-    return jobQueue.top();;
+Process SJF_Preemptive::getTopProcess(){
+    return jobQueue.top();
 
 }
-int Priority_Preemptive::getSize() {return jobQueue.size();}
-
-void Priority_Preemptive::popProcess(){
+int SJF_Preemptive::getSize() {return jobQueue.size();}
+void SJF_Preemptive::popProcess(){
        jobQueue.pop();
 }
