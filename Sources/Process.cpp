@@ -19,6 +19,23 @@ float Process::getWaiting_time() const {
     return waiting_time; 
 }
 
+float Process::getTurnaround_time() const { 
+    return turnaround_time; 
+}
+
 void Process::setWaiting_time(int time) { 
     waiting_time = time; 
 }
+
+void Process::setTurnaround_time(float time) { 
+    turnaround_time = time; 
+}
+
+float Process::getTotal_Burst_time() const {
+     return total_burst_time;
+}
+
+void Process::setBurst_time(float time) {
+    burst_time = time;
+}
+

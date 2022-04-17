@@ -7,3 +7,12 @@ protected:
 public:
     TimeLine applyAlgorithm(vector<Process> processes, float quantumTime=0);
 };
+
+class Preemptive : public Algorithm {
+    TimeLine getTimeLine(vector<Process> processes, float quantumTime);
+    virtual void addProcess(Process p) = 0;
+    virtual Process getTopProcess() = 0;
+    virtual int getSize() = 0;
+    virtual void popProcess() = 0;
+};
+
