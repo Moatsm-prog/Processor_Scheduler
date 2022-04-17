@@ -5,8 +5,10 @@ class Process {
         float burst_time;
         int priority;
         float waiting_time;
+        float turnaround_time;
     public:
         Process(int process_id, int arrival_time, int burst_time, int priority=0);
+        Process(){}
 
         // * Getters ---------------------------
         int getProcess_id() const;
@@ -14,8 +16,10 @@ class Process {
         float getBurst_time() const;
         int getPriority() const;
         float getWaiting_time() const;
+        float getTurnaround_time() const;
 
         // * Setters ---------------------------
         void setWaiting_time(int time);
+        void setTurnaround_time(float time);
 
 };

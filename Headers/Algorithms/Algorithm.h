@@ -7,3 +7,8 @@ protected:
 public:
     TimeLine applyAlgorithm(vector<Process> processes, float quantumTime=0);
 };
+
+class RoundRobin : public Algorithm {
+    TimeLine getTimeLine(vector<Process> processes, float quantumTime);
+};
+
