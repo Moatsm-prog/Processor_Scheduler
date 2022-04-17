@@ -1,8 +1,4 @@
-#include "Algorithm.h"
-#include <queue>
-#include <utility>
-
-using namespace std;
+#include "RoundRobin.h"
 
 TimeLine RoundRobin::getTimeLine(vector<Process> processes, float quantumTime){
     TimeLine schedule = *(new TimeLine());
