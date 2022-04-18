@@ -31,6 +31,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->GanttChart->setDisabled(true);
     ui->label_5->setStyleSheet("background-color: white ; border: 1px solid");
     ui->label_7->setStyleSheet("background-color: white ; border: 1px solid");
+
+    clearGranttTray();
 }
 MainWindow::~MainWindow()
 {
@@ -175,7 +177,10 @@ void MainWindow::on_GanttChart_clicked()
     ProcessTray *tray = new ProcessTray();
     tray->drawTimeLine(scheduler);
 
-    clearGranttTray();
+    QLayoutItem* item = ui->ganttchart_layout->takeAt(0);
+    if(item){
+        delete item;
+    }
 
     ui->ganttchart_layout->addLayout(tray);
 }
@@ -202,4 +207,8 @@ void MainWindow::clearGranttTray(){
         delete item;
     }
     ui->ganttchart_layout->update();
+    ProcessWidget *holder = new ProcessWidget();
+    ProcessTray *tray = new ProcessTray();
+    tray->addLayout(holder);
+    ui->ganttchart_layout->addLayout(tray);
 }
