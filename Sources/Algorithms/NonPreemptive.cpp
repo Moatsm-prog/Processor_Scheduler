@@ -1,6 +1,6 @@
 #include "NonPreemptive.h"
 
-TimeLine NonPreemptive::getTimeLine(vector<Process> processes) {
+TimeLine NonPreemptive::getTimeLine(vector<Process> processes, float quantumTime) {
     TimeLine tl;
     int i = 0;
     int readyPr = 0;

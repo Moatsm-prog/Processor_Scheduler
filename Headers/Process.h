@@ -1,3 +1,5 @@
+#ifndef PROCESS
+#define PROCESS
 class Process {
     private:
         int process_id;
@@ -26,3 +28,5 @@ class Process {
         void setBurst_time(float time);
 
 };
+
+#endif

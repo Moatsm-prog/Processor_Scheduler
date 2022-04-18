@@ -3,7 +3,7 @@
 #include<QtGlobal>
 
 
-TimeLine Preemptive::getTimeLine(vector<Process> processes) {
+TimeLine Preemptive::getTimeLine(vector<Process> processes, float quantumTime) {
     TimeLine schedule = *(new TimeLine());
     int len = processes.size();
     int remaining = len;
