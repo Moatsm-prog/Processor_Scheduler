@@ -107,7 +107,7 @@
                   </property>
                   <property name="sizeHint" stdset="0">
                    <size>
-                    <width>50</width>
+                    <width>46</width>
                     <height>20</height>
                    </size>
                   </property>
@@ -144,7 +144,7 @@
                   </property>
                   <property name="sizeHint" stdset="0">
                    <size>
-                    <width>57</width>
+                    <width>54</width>
                     <height>20</height>
                    </size>
                   </property>
@@ -230,7 +230,7 @@
                   </property>
                   <property name="sizeHint" stdset="0">
                    <size>
-                    <width>33</width>
+                    <width>25</width>
                     <height>20</height>
                    </size>
                   </property>
@@ -257,8 +257,8 @@
               </property>
               <property name="sizeHint" stdset="0">
                <size>
-                <width>39</width>
-                <height>21</height>
+                <width>2</width>
+                <height>15</height>
                </size>
               </property>
              </spacer>
@@ -270,6 +270,12 @@
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>40</height>
+               </size>
               </property>
               <property name="text">
                <string>Add Process</string>
@@ -284,6 +290,12 @@
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>40</height>
+               </size>
+              </property>
               <property name="text">
                <string>Reset</string>
               </property>
@@ -296,6 +308,12 @@
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>40</height>
+               </size>
               </property>
               <property name="text">
                <string>Generate 
@@ -346,11 +364,20 @@
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>20</height>
+             </size>
+            </property>
             <property name="autoFillBackground">
              <bool>false</bool>
             </property>
             <property name="text">
              <string/>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
             </property>
            </widget>
           </item>
@@ -391,8 +418,17 @@
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>20</height>
+             </size>
+            </property>
             <property name="text">
              <string/>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
             </property>
            </widget>
           </item>

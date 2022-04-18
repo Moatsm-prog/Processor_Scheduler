@@ -56,7 +56,7 @@ ProcessWidget *ProcessTray::getProcessWidget(TimeEntry entry) {
     QString color;
     auto it = colorMap.find(name);
     if(it == colorMap.end()){
-        colorMap[name] = colors[curColor++];
+        colorMap[name] = colors[curColor++%colors.size()];
     }
     color = colorMap[name];
 

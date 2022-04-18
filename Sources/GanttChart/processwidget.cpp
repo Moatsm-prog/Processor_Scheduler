@@ -8,11 +8,16 @@ ProcessWidget::ProcessWidget(QWidget *parent, QString name, QString start, QStri
     endLabel = new QLabel();
     this->color = color;
     this->width = width;
+    nameLabel->setMinimumHeight(60);
+    startLabel->setMinimumHeight(60);
+    endLabel->setMinimumHeight(60);
 
     nameLabel->setText(name);
     startLabel->setText(start);
     endLabel->setText(end);
-    nameLabel->setStyleSheet("QLabel { background-color : "+ color +";}");
+    nameLabel->setStyleSheet("QLabel { background-color : "+ color +";font-weight: bold; font-size:15pt;}");
+    startLabel->setStyleSheet("QLabel {font-size:12pt;}");
+    endLabel->setStyleSheet("QLabel {font-size:12pt;}");
 
     this->addWidget(nameLabel, 0, 0, 1, 2);
     this->addWidget(startLabel, 1, 0);
