@@ -9,7 +9,7 @@ protected:
     virtual int getSize() = 0;
     virtual void popProcess() = 0;
 public:
-    TimeLine getTimeLine(vector<Process> processes);
+    TimeLine getTimeLine(vector<Process> processes, float quantumTime);
 };
 
 #endif // PREEMPTIVE_H
