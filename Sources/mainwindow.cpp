@@ -175,11 +175,8 @@ void MainWindow::on_GanttChart_clicked()
     ProcessTray *tray = new ProcessTray();
     tray->drawTimeLine(scheduler);
 
-    QLayoutItem* item = ui->ganttchart_layout->takeAt(0);
-    if(item){
-        delete item;
-    }
-    ui->ganttchart_layout->update();
+    clearGranttTray();
+
     ui->ganttchart_layout->addLayout(tray);
 }
 
@@ -196,5 +193,13 @@ void MainWindow::on_Reset_clicked()
     ui->comboBox->setCurrentIndex(0);
     ui->label_5->clear();
     ui->label_7->clear();
+    clearGranttTray();
 }
 
+void MainWindow::clearGranttTray(){
+    QLayoutItem* item = ui->ganttchart_layout->takeAt(0);
+    if(item){
+        delete item;
+    }
+    ui->ganttchart_layout->update();
+}

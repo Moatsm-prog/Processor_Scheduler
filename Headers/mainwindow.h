@@ -30,6 +30,10 @@ private slots:
     void on_Reset_clicked();
 
 private:
+
+    void clearGranttTray();
+
+private:
     Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H
