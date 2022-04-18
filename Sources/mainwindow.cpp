@@ -127,24 +127,31 @@ void MainWindow::on_GanttChart_clicked()
         case 1:
             algo = new FCFS();
             scheduler = algo->applyAlgorithm(memory);
+            break;
         case 2:
             algo = new RoundRobin();
             scheduler = algo->applyAlgorithm(memory, QuantumTime);
+            break;
         case 3:
             algo = new SJF_NonPreemptive();
             scheduler = algo->applyAlgorithm(memory);
+            break;
         case 4:
             algo = new SJF_Preemptive();
             scheduler = algo->applyAlgorithm(memory);
+            break;
         case 5:
             algo = new Priority_NonPreemptive();
             scheduler = algo->applyAlgorithm(memory);
+            break;
         case 6:
             algo = new Priority_Preemptive();
             scheduler = algo->applyAlgorithm(memory);
+            break;
         default:
-            ;
+            break;
     }
+    scheduler.print();
 
     ProcessTray *tray = new ProcessTray();
     tray->drawTimeLine(scheduler);
