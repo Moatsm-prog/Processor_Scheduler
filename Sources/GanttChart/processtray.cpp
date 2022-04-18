@@ -1,5 +1,4 @@
 #include "processtray.h"
-#include "processwidget.h"
 
 #include "qdebug.h"
 
@@ -25,23 +24,43 @@ void ProcessTray::drawTimeLine(TimeLine timeline) {
     printf("dddddddddddddddddd\n");
     timeline.print();
     printf("dddddddddddddddddd\n");
-    for(TimeEntry entry : timeline.entries){
-        Process proc = entry.getProcess();
-        QString name = "p" + QString::number(proc.getProcess_id());
-        QString start = QString::number(entry.getStart_time());
-        QString end = QString::number(entry.getEnd_time());
-        float width = proc.getBurst_time();
 
-        QString color;
-        auto it = colorMap.find(name);
-        if(it == colorMap.end()){
-            colorMap[name] = colors[curColor++];
-        }
-        color = colorMap[name];
+    if(!timeline.entries.size()) return;
 
-        ProcessWidget *procWidget = new ProcessWidget(nullptr,
-                                 name, start, end, width, color);
-
-        this->addLayout(procWidget);
+    if(timeline.entries[0].getStart_time()){
+        this->addLayout(getIdleProcess(0, timeline.entries[0].getStart_time()));
     }
+    this->addLayout(getProcessWidget(timeline.entries[0]));
+    for(int i =1; i < (int) timeline.entries.size(); i++){
+        if(timeline.entries[i].getEnd_time() != timeline.entries[i-1].getStart_time()){
+            this->addLayout(getIdleProcess(
+                                timeline.entries[i-1].getStart_time(), timeline.entries[i].getEnd_time()));
+        }
+        TimeEntry entry = timeline.entries[i];
+        this->addLayout(getProcessWidget(entry));
+    }
+}
+
+ProcessWidget* ProcessTray::getIdleProcess(float start, float end) {
+    return new ProcessWidget(nullptr,
+                             "idle", QString::number(start), QString::number(end), end-start, "#5BFF62");
+}
+
+ProcessWidget *ProcessTray::getProcessWidget(TimeEntry entry) {
+    Process proc = entry.getProcess();
+    QString name = "p" + QString::number(proc.getProcess_id());
+    QString start = QString::number(entry.getStart_time());
+    QString end = QString::number(entry.getEnd_time());
+    float width = proc.getBurst_time();
+
+    QString color;
+    auto it = colorMap.find(name);
+    if(it == colorMap.end()){
+        colorMap[name] = colors[curColor++];
+    }
+    color = colorMap[name];
+
+    ProcessWidget *procWidget = new ProcessWidget(nullptr,
+                             name, start, end, width, color);
+    return procWidget;
 }
