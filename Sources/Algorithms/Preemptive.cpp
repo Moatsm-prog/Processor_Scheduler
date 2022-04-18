@@ -11,8 +11,6 @@ TimeLine Preemptive::getTimeLine(vector<Process> processes, float quantumTime) {
     float start;
     float end;
     float nextTime, startTime, last_end;
-    float total_waiting = 0;
-    float total_turnAround = 0;
     Process current, lastProc;
     int flag = 0;
     while (j < len && processes[j].getArrival_time() == 0) {
@@ -62,9 +60,7 @@ TimeLine Preemptive::getTimeLine(vector<Process> processes, float quantumTime) {
             }
             else {
                 (current).setTurnaround_time(nextTime - current.getArrival_time());
-                total_turnAround += current.getTurnaround_time();
                 (current).setWaiting_time((current).getTurnaround_time() - current.getTotal_Burst_time());
-                total_waiting += current.getWaiting_time();
 
                 cur_id = current.getProcess_id();
                 if(last_id == -1){
@@ -92,6 +88,7 @@ TimeLine Preemptive::getTimeLine(vector<Process> processes, float quantumTime) {
         if (nextTime == processes[j].getArrival_time()) addProcess(processes[j++]);
     }
     schedule.addProcess(lastProc, startTime, last_end);
+
     return schedule;
 }
 

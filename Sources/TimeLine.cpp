@@ -18,3 +18,36 @@ void TimeLine::print() {
         p.getProcess_id(), p.getArrival_time(), p.getBurst_time(), p.getPriority(), e.getStart_time(), e.getEnd_time(), p.getWaiting_time());
     }
 }
+
+float TimeLine::calcTurnaround(){
+    float TotalTurnaround =0;
+    int count = 0;
+    for(TimeEntry i : entries){
+        Process p = i.getProcess();
+        if(p.getTurnaround_time() != -1){
+            TotalTurnaround += p.getTurnaround_time();
+            count++;
+        }
+    }
+
+    return TotalTurnaround/count;
+
+
+}
+
+float TimeLine::calcWaiting(){
+    float TotalWaiting =0;
+    int count = 0;
+    for(TimeEntry i : entries){
+        Process p = i.getProcess();
+        if(p.getWaiting_time() != -1){
+            TotalWaiting += p.getWaiting_time();
+            count++;
+        }
+    }
+
+    return TotalWaiting/count;
+
+
+}
+

@@ -11,7 +11,7 @@
 #include <QRegion>
 #include "qdebug.h"
 
-int counter = 0;
+int counter = 1;
 vector<Process> memory;
 float arrivalTime;
 float burstTime;
@@ -31,9 +31,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->GanttChart->setDisabled(true);
     ui->label_5->setStyleSheet("background-color: white ; border: 1px solid");
     ui->label_7->setStyleSheet("background-color: white ; border: 1px solid");
-    ui->AddProcess->setStyleSheet("background-color: #37BD85 ; border-radius : 5px ; font: bold 12px");
-    ui->Reset->setStyleSheet("background-color: #37BD85 ; border-radius : 5px ; font: bold 12px");
-    ui->GanttChart->setStyleSheet("background-color: #37BD85 ;  border-radius : 5px ; font: bold 12px");
 }
 MainWindow::~MainWindow()
 {
@@ -44,7 +41,30 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_comboBox_currentIndexChanged(int index)
 {
-    if(index == 1 || index == 3 || index == 4){
+
+
+    ui->AddProcess->setEnabled(false);
+    ui->Arrival->setValue(0.00);
+    ui->Burst->setValue(0.00);
+    ui->Priority->setValue(0);
+    ui->Quantum->setValue(0.00);
+    ui->GanttChart->setEnabled(true);
+    memory.clear();
+
+    if(index == 0){
+        ui->Arrival->setValue(0.00);
+        ui->Burst->setValue(0.00);
+        ui->Priority->setValue(0);
+        ui->Quantum->setValue(0.00);
+        ui->Arrival->setDisabled(true);
+        ui->Burst->setDisabled(true);
+        ui->Priority->setDisabled(true);
+        ui->Quantum->setEnabled(false);
+        ui->AddProcess->setEnabled(false);
+        ui->GanttChart->setDisabled(true);
+
+    }
+    else if(index == 1 || index == 3 || index == 4){
         ui->Arrival->setDisabled(false);
         ui->Burst->setDisabled(false);
         ui->Priority->setDisabled(true);
@@ -113,7 +133,6 @@ void MainWindow::on_AddProcess_clicked()
     ui->Arrival->setValue(0.00);
     ui->Burst->setValue(0.00);
     ui->Priority->setValue(0);
-    //ui->Quantum->setValue(0.00);
     ui->GanttChart->setEnabled(true);
 }
 
@@ -151,8 +170,8 @@ void MainWindow::on_GanttChart_clicked()
         default:
             break;
     }
-    scheduler.print();
-
+    ui->label_5->setText(QString::number((scheduler.calcWaiting())));
+    ui->label_7->setText(QString::number((scheduler.calcTurnaround())));
     ProcessTray *tray = new ProcessTray();
     tray->drawTimeLine(scheduler);
 
@@ -162,7 +181,6 @@ void MainWindow::on_GanttChart_clicked()
     }
     ui->ganttchart_layout->update();
     ui->ganttchart_layout->addLayout(tray);
-    on_Reset_clicked();
 }
 
 
@@ -176,5 +194,7 @@ void MainWindow::on_Reset_clicked()
     ui->Quantum->setValue(0.00);
     ui->GanttChart->setEnabled(false);
     ui->comboBox->setCurrentIndex(0);
+    ui->label_5->clear();
+    ui->label_7->clear();
 }
 

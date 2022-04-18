@@ -17,6 +17,7 @@ TimeLine NonPreemptive::getTimeLine(vector<Process> processes, float quantumTime
         start_time = max(lEnd, proc.getArrival_time());
         end_time = start_time + proc.getBurst_time();
         proc.setWaiting_time(start_time - proc.getArrival_time());
+        proc.setTurnaround_time(proc.getWaiting_time()+proc.getBurst_time());
         lEnd = end_time;
         tl.addProcess(proc, start_time, end_time);
     }

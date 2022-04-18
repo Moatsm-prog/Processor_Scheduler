@@ -12,9 +12,9 @@ TimeLine FCFS::getTimeLine(vector<Process> processes, float quantumTime){
             start_time = max(end_time,processes[i].getArrival_time());
         }
         end_time = start_time + processes[i].getBurst_time();
-        schedule.addProcess(processes[i], start_time, end_time);
         processes[i].setTurnaround_time( end_time - processes[i].getArrival_time() );
         processes[i].setWaiting_time( processes[i].getTurnaround_time() - processes[i].getBurst_time() );
+        schedule.addProcess(processes[i], start_time, end_time);
     }
     return schedule;
 }

@@ -16,6 +16,10 @@ public:
 
     void print();
 
+    float calcTurnaround();
+
+    float calcWaiting();
+
     friend class ProcessTray;
 };
 

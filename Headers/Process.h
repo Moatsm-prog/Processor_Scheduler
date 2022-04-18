@@ -6,8 +6,8 @@ class Process {
         float arrival_time;
         float burst_time;
         int priority;
-        float waiting_time;
-        float turnaround_time;
+        float waiting_time = -1;
+        float turnaround_time = -1;
         float total_burst_time;
     public:
         Process(int process_id, int arrival_time, int burst_time, int priority=0);
