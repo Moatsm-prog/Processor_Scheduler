@@ -6,8 +6,10 @@
 #include "Priority_Preemptive.h"
 #include "SJF_NonPreemptive.h"
 #include "SJF_Preemptive.h"
+#include "processtray.h"
 #include <QVector>
 #include <QRegion>
+#include "qdebug.h"
 
 int counter = 0;
 vector<Process> memory;
@@ -104,7 +106,7 @@ void MainWindow::on_AddProcess_clicked()
     priority = ui->Priority->value();
     QuantumTime = ui->Quantum->value();
 
-    memory.push_back(*(new Process(counter++, arrivalTime, burstTime, priority)));
+    memory.push_back(Process(counter++, arrivalTime, burstTime, priority));
 
     if(ui->comboBox->currentIndex() == 2) ui->Quantum->setEnabled(false);
     ui->AddProcess->setEnabled(false);
@@ -144,13 +146,16 @@ void MainWindow::on_GanttChart_clicked()
             ;
     }
 
-    ui->AddProcess->setEnabled(false);
-    ui->Arrival->setValue(0.00);
-    ui->Burst->setValue(0.00);
-    ui->Priority->setValue(0);
-    ui->Quantum->setValue(0.00);
-    ui->GanttChart->setEnabled(false);
-    ui->comboBox->setCurrentIndex(0);
+    ProcessTray *tray = new ProcessTray();
+    tray->drawTimeLine(scheduler);
+
+    QLayoutItem* item = ui->ganttchart_layout->takeAt(0);
+    if(item){
+        delete item;
+    }
+    ui->ganttchart_layout->update();
+    ui->ganttchart_layout->addLayout(tray);
+    on_Reset_clicked();
 }
 
 
