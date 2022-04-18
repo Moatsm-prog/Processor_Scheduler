@@ -16,6 +16,5 @@ TimeLine FCFS::getTimeLine(vector<Process> processes, float quantumTime){
         processes[i].setTurnaround_time( end_time - processes[i].getArrival_time() );
         processes[i].setWaiting_time( processes[i].getTurnaround_time() - processes[i].getBurst_time() );
     }
-    schedule.print();
     return schedule;
 }

@@ -93,11 +93,6 @@ TimeLine Preemptive::getTimeLine(vector<Process> processes, float quantumTime) {
         if (nextTime == processes[j].getArrival_time()) addProcess(processes[j++]);
     }
     schedule.addProcess(lastProc, startTime, last_end);
-    schedule.print();
-    //schedule.setAvgTurnaround(total_turnAround / len);
-    //schedule.setAvgWaiting(total_waiting / len);
-    //cout << "Average TurnAround:" + to_string(total_turnAround / len) << "\n";
-    //cout << "Average Waiting:" + to_string(total_waiting / len) << "\n";
     return schedule;
 }
 
