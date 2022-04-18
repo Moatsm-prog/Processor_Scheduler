@@ -86,8 +86,7 @@ TimeLine Preemptive::getTimeLine(vector<Process> processes, float quantumTime) {
         }
         else {
             nextTime = processes[j].getArrival_time();
-            schedule.addProcess(*(new Process(-1, 0, 0, 0)), time, nextTime);
-
+            //schedule.addProcess(*(new Process(-1, 0, 0, 0)), time, nextTime);
         }
 
         if (nextTime == processes[j].getArrival_time()) addProcess(processes[j++]);

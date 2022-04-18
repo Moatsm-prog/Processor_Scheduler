@@ -32,9 +32,9 @@ void ProcessTray::drawTimeLine(TimeLine timeline) {
     }
     this->addLayout(getProcessWidget(timeline.entries[0]));
     for(int i =1; i < (int) timeline.entries.size(); i++){
-        if(timeline.entries[i].getEnd_time() != timeline.entries[i-1].getStart_time()){
+        if(timeline.entries[i].getStart_time() != timeline.entries[i-1].getEnd_time()){
             this->addLayout(getIdleProcess(
-                                timeline.entries[i-1].getStart_time(), timeline.entries[i].getEnd_time()));
+                                timeline.entries[i-1].getEnd_time(), timeline.entries[i].getStart_time()));
         }
         TimeEntry entry = timeline.entries[i];
         this->addLayout(getProcessWidget(entry));
