@@ -17,7 +17,7 @@ TimeLine RoundRobin::getTimeLine(vector<Process> processes, float quantumTime){
             current = jobQueue.front();
             jobQueue.pop();
             if(current.second <= quantumTime){
-                current.first.setTurnaround_time(current.first.getBurst_time() + time - current.first.getArrival_time());
+                current.first.setTurnaround_time(current.second + time - current.first.getArrival_time());
                 current.first.setWaiting_time(current.first.getTurnaround_time() - current.first.getBurst_time());
                 total_waiting_time += current.first.getWaiting_time();
                 total_turnaround_time += current.first.getTurnaround_time();
