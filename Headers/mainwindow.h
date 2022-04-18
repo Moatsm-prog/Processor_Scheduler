@@ -27,6 +27,8 @@ private slots:
 
     void on_GanttChart_clicked();
 
+    void on_Reset_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

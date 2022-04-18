@@ -1,5 +1,20 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "FCFS.h"
+#include "RoundRobin.h"
+#include "Priority_NonPreemptive.h"
+#include "Priority_Preemptive.h"
+#include "SJF_NonPreemptive.h"
+#include "SJF_Preemptive.h"
+#include <QVector>
+
+int counter = 0;
+vector<Process> memory;
+float arrivalTime;
+float burstTime;
+int priority;
+float QuantumTime;
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -67,7 +82,7 @@ void MainWindow::on_Burst_valueChanged(double arg1)
 void MainWindow::on_Quantum_valueChanged(double arg1)
 {
     int i = ui->comboBox->currentIndex();
-    if(arg1 == 0){
+    if(i == 2 && arg1 == 0){
         ui->AddProcess->setEnabled(false);
     }
     else if(i == 2 && arg1 > 0.0 && ui->Burst->value() > 0.0){
@@ -79,21 +94,65 @@ void MainWindow::on_Quantum_valueChanged(double arg1)
 
 void MainWindow::on_AddProcess_clicked()
 {
+    arrivalTime = ui->Arrival->value();
+    burstTime = ui->Burst->value();
+    priority = ui->Priority->value();
+    QuantumTime = ui->Quantum->value();
+
+    memory.push_back(*(new Process(counter++, arrivalTime, burstTime, priority)));
+
+    if(ui->comboBox->currentIndex() == 2) ui->Quantum->setEnabled(false);
+    ui->AddProcess->setEnabled(false);
+    ui->Arrival->setValue(0.00);
+    ui->Burst->setValue(0.00);
+    ui->Priority->setValue(0);
+    //ui->Quantum->setValue(0.00);
+    ui->GanttChart->setEnabled(true);
+}
+
+
+void MainWindow::on_GanttChart_clicked()
+{
+    Algorithm *algo;
+    TimeLine scheduler;
+    int index = ui->comboBox->currentIndex();
+    switch(index){
+        case 1:
+            algo = new FCFS();
+            scheduler = algo->applyAlgorithm(memory);
+        case 2:
+            algo = new RoundRobin();
+            scheduler = algo->applyAlgorithm(memory, QuantumTime);
+        case 3:
+            algo = new SJF_NonPreemptive();
+            scheduler = algo->applyAlgorithm(memory);
+        case 4:
+            algo = new SJF_Preemptive();
+            scheduler = algo->applyAlgorithm(memory);
+        case 5:
+            algo = new Priority_NonPreemptive();
+            scheduler = algo->applyAlgorithm(memory);
+        case 6:
+            algo = new Priority_Preemptive();
+            scheduler = algo->applyAlgorithm(memory);
+        default:
+            ;
+    }
 
     ui->AddProcess->setEnabled(false);
     ui->Arrival->setValue(0.00);
     ui->Burst->setValue(0.00);
     ui->Priority->setValue(0);
     ui->Quantum->setValue(0.00);
-    ui->GanttChart->setEnabled(true);
-
-
+    ui->GanttChart->setEnabled(false);
+    ui->comboBox->setCurrentIndex(0);
 }
 
 
-void MainWindow::on_GanttChart_clicked()
+void MainWindow::on_Reset_clicked()
 {
-    ui->AddProcess->setEnabled(false);
+    memory.clear();
+    counter = 0;
     ui->Arrival->setValue(0.00);
     ui->Burst->setValue(0.00);
     ui->Priority->setValue(0);
