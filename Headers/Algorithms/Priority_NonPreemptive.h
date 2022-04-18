@@ -5,7 +5,7 @@
 
 #include <queue>
 
-class Priority_NonPreemprive : public NonPreemptive {
+class Priority_NonPreemptive : public NonPreemptive {
     priority_queue<Process, vector<Process>, PriorityCompare> pq;
 
     void addProcess(Process p);
