@@ -7,6 +7,7 @@
 #include "SJF_NonPreemptive.h"
 #include "SJF_Preemptive.h"
 #include <QVector>
+#include <QRegion>
 
 int counter = 0;
 vector<Process> memory;
@@ -26,8 +27,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->Quantum->setEnabled(false);
     ui->AddProcess->setEnabled(false);
     ui->GanttChart->setDisabled(true);
+    ui->label_5->setStyleSheet("background-color: white ");
+    ui->label_7->setStyleSheet("background-color: white ");
 }
-
 MainWindow::~MainWindow()
 {
     delete ui;
