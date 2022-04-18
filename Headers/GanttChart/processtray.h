@@ -17,6 +17,7 @@ private:
 
 public:
     explicit ProcessTray(QWidget *parent = nullptr);
+    ~ProcessTray();
 
     void drawTimeLine(TimeLine timeline);
 };

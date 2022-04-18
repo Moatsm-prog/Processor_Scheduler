@@ -12,6 +12,15 @@ ProcessTray::ProcessTray(QWidget *parent)
 
 }
 
+ProcessTray::~ProcessTray()
+{
+    QLayoutItem *child;
+    while ((child = this->takeAt(0)) != nullptr) {
+        delete child->widget(); // delete the widget
+        delete child;   // delete the layout item
+    }
+}
+
 void ProcessTray::drawTimeLine(TimeLine timeline) {
     printf("dddddddddddddddddd\n");
     timeline.print();

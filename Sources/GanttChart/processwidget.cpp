@@ -13,8 +13,6 @@ ProcessWidget::ProcessWidget(QWidget *parent, QString name, QString start, QStri
     startLabel->setText(start);
     endLabel->setText(end);
     nameLabel->setStyleSheet("QLabel { background-color : "+ color +";}");
-    startLabel->setStyleSheet("QLabel { background-color : "+ color +";}");
-    endLabel->setStyleSheet("QLabel { background-color : "+ color +";}");
 
     this->addWidget(nameLabel, 0, 0, 1, 2);
     this->addWidget(startLabel, 1, 0);
@@ -25,4 +23,10 @@ ProcessWidget::ProcessWidget(QWidget *parent, QString name, QString start, QStri
     startLabel->setAlignment(Qt::AlignLeft);
     endLabel->setAlignment(Qt::AlignRight);
     setSpacing(0);
+}
+
+ProcessWidget::~ProcessWidget() {
+    delete nameLabel;
+    delete startLabel;
+    delete endLabel;
 }
