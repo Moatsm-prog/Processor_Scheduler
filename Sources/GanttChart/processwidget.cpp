@@ -1,6 +1,6 @@
 #include "processwidget.h"
 
-ProcessWidget::ProcessWidget(QWidget *parent, QString name, QString start, QString end, int width, QString color)
+ProcessWidget::ProcessWidget(QWidget *parent, QString name, QString start, QString end, float width, QString color)
     : QGridLayout{parent}
 {
     nameLabel = new QLabel();

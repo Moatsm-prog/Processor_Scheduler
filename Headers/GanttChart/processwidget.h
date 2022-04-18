@@ -13,11 +13,11 @@ private:
     QLabel *startLabel;
     QLabel *endLabel;
     QString color;
-    int width;
+    float width;
 
 public:
     explicit ProcessWidget(QWidget *parent = nullptr, QString name="---", QString start="0",
-                           QString end="0", int width=10, QString color="#fff");
+                           QString end="0", float width=10, QString color="#fff");
 
 };
 
