@@ -19,4 +19,10 @@ ProcessWidget::ProcessWidget(QWidget *parent, QString name, QString start, QStri
     this->addWidget(nameLabel, 0, 0, 1, 2);
     this->addWidget(startLabel, 1, 0);
     this->addWidget(endLabel, 1, 1);
+
+    //Allignment
+    nameLabel->setAlignment(Qt::AlignCenter);
+    startLabel->setAlignment(Qt::AlignLeft);
+    endLabel->setAlignment(Qt::AlignRight);
+    setSpacing(0);
 }
