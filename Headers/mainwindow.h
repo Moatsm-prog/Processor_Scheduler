@@ -15,6 +15,18 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+
+    void on_comboBox_currentIndexChanged(int index);
+
+    void on_Burst_valueChanged(double arg1);
+
+    void on_Quantum_valueChanged(double arg1);
+
+    void on_AddProcess_clicked();
+
+    void on_GanttChart_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
