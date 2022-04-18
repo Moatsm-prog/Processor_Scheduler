@@ -298,7 +298,8 @@
                </sizepolicy>
               </property>
               <property name="text">
-               <string>Generate Gantt Chart</string>
+               <string>Generate 
+ Gantt Chart</string>
               </property>
              </widget>
             </item>
