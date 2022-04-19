@@ -10,7 +10,7 @@ class Process {
         float turnaround_time = -1;
         float total_burst_time;
     public:
-        Process(int process_id, int arrival_time, int burst_time, int priority=0);
+        Process(int process_id, float arrival_time, float burst_time, int priority=0);
         Process(){}
 
         // * Getters ---------------------------

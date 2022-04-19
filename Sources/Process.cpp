@@ -1,7 +1,7 @@
 #include "Process.h"
 
-Process::Process(int process_id, int arrival_time, int burst_time, int priority):
-            process_id(process_id), burst_time(burst_time), arrival_time(arrival_time), priority(priority) , total_burst_time(burst_time){}
+Process::Process(int process_id, float arrival_time, float burst_time, int priority):
+            process_id(process_id), arrival_time(arrival_time), burst_time(burst_time), priority(priority) , total_burst_time(burst_time){}
 
 int Process::getProcess_id() const { 
     return process_id; 
