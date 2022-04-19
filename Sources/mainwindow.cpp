@@ -152,6 +152,7 @@ void MainWindow::on_AddProcess_clicked()
         else tableItem->setText(QString::number(item.getPriority()));
 
         tableItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+        tableItem->setTextAlignment(Qt::AlignHCenter);
         ui->tableWidget->setItem(row, i, tableItem);
     }
     row++;
