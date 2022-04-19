@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>613</height>
+    <height>746</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -121,6 +121,12 @@
                     <verstretch>0</verstretch>
                    </sizepolicy>
                   </property>
+                  <property name="maximum">
+                   <double>999.990000000000009</double>
+                  </property>
+                  <property name="singleStep">
+                   <double>0.200000000000000</double>
+                  </property>
                  </widget>
                 </item>
                </layout>
@@ -157,6 +163,12 @@
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
+                  </property>
+                  <property name="maximum">
+                   <double>999.990000000000009</double>
+                  </property>
+                  <property name="singleStep">
+                   <double>0.200000000000000</double>
                   </property>
                  </widget>
                 </item>
@@ -201,6 +213,9 @@
                     <verstretch>0</verstretch>
                    </sizepolicy>
                   </property>
+                  <property name="maximum">
+                   <number>10</number>
+                  </property>
                  </widget>
                 </item>
                </layout>
@@ -237,7 +252,14 @@
                  </spacer>
                 </item>
                 <item>
-                 <widget class="QDoubleSpinBox" name="Quantum"/>
+                 <widget class="QDoubleSpinBox" name="Quantum">
+                  <property name="maximum">
+                   <double>999.990000000000009</double>
+                  </property>
+                  <property name="singleStep">
+                   <double>0.200000000000000</double>
+                  </property>
+                 </widget>
                 </item>
                </layout>
               </item>
@@ -435,6 +457,16 @@
          </layout>
         </item>
         <item>
+         <widget class="QTableWidget" name="tableWidget">
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
          <spacer name="verticalSpacer">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
@@ -465,7 +497,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>22</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>

@@ -29,7 +29,7 @@ TimeLine RoundRobin::getTimeLine(vector<Process> processes, float quantumTime){
                 schedule.addProcess(current.first, time, time + quantumTime);
                 current.second -= quantumTime;
                 time += quantumTime;
-                while(j < len && processes[j].getArrival_time() < time)
+                while(j < len && processes[j].getArrival_time() <= time)
                     jobQueue.push({processes[j], processes[j++].getBurst_time()});
                 jobQueue.push({current.first, current.second});
             }

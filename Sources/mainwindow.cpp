@@ -9,6 +9,8 @@
 #include "processtray.h"
 #include <QVector>
 #include <QRegion>
+#include <QTableWidget>
+#include <QTableWidgetItem>
 #include "qdebug.h"
 
 int counter = 1;
@@ -17,6 +19,7 @@ float arrivalTime;
 float burstTime;
 int priority;
 float QuantumTime;
+int row = 0;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -32,13 +35,19 @@ MainWindow::MainWindow(QWidget *parent)
     ui->label_5->setStyleSheet("background-color: white ; border: 1px solid");
     ui->label_7->setStyleSheet("background-color: white ; border: 1px solid");
 
+    ui->tableWidget->setColumnCount(3);
+    ui->tableWidget->setRowCount(0);
+    QStringList hLabels;
+    hLabels << "Arrival Time" << "Burst Time" << "Priority";
+    ui->tableWidget->setHorizontalHeaderLabels(hLabels);
+    ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+
     clearGranttTray();
 }
 MainWindow::~MainWindow()
 {
     delete ui;
 }
-
 
 
 void MainWindow::on_comboBox_currentIndexChanged(int index)
@@ -52,6 +61,9 @@ void MainWindow::on_comboBox_currentIndexChanged(int index)
     ui->Quantum->setValue(0.00);
     ui->GanttChart->setEnabled(true);
     memory.clear();
+    ui->tableWidget->clearContents();
+    row = 0;
+    ui->tableWidget->setRowCount(row);
 
     if(index == 0){
         ui->Arrival->setValue(0.00);
@@ -128,7 +140,20 @@ void MainWindow::on_AddProcess_clicked()
     priority = ui->Priority->value();
     QuantumTime = ui->Quantum->value();
 
-    memory.push_back(Process(counter++, arrivalTime, burstTime, priority));
+    Process item = Process(counter++, arrivalTime, burstTime, priority);
+    memory.push_back(item);
+    ui->tableWidget->insertRow(row);
+    QTableWidgetItem *tableItem;
+    for(int i = 0; i < 3; i++){
+        tableItem = new QTableWidgetItem;
+        if(i == 0) tableItem->setText(QString::number(item.getArrival_time()));
+        else if(i == 1) tableItem->setText(QString::number(item.getBurst_time()));
+        else tableItem->setText(QString::number(item.getPriority()));
+
+        tableItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+        ui->tableWidget->setItem(row, i, tableItem);
+    }
+    row++;
 
     if(ui->comboBox->currentIndex() == 2) ui->Quantum->setEnabled(false);
     ui->AddProcess->setEnabled(false);
@@ -189,7 +214,7 @@ void MainWindow::on_GanttChart_clicked()
 void MainWindow::on_Reset_clicked()
 {
     memory.clear();
-    counter = 0;
+    counter = 1;
     ui->Arrival->setValue(0.00);
     ui->Burst->setValue(0.00);
     ui->Priority->setValue(0);
@@ -198,6 +223,9 @@ void MainWindow::on_Reset_clicked()
     ui->comboBox->setCurrentIndex(0);
     ui->label_5->clear();
     ui->label_7->clear();
+    ui->tableWidget->clearContents();
+    row = 0;
+    ui->tableWidget->setRowCount(row);
     clearGranttTray();
 }
 
