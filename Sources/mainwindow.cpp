@@ -35,13 +35,13 @@ MainWindow::MainWindow(QWidget *parent)
     ui->label_5->setStyleSheet("background-color: white ; border: 1px solid");
     ui->label_7->setStyleSheet("background-color: white ; border: 1px solid");
 
-    ui->tableWidget->setColumnCount(3);
+    ui->tableWidget->setColumnCount(4);
     ui->tableWidget->setRowCount(0);
     QStringList hLabels;
-    hLabels << "Arrival Time" << "Burst Time" << "Priority";
+    hLabels << "Process ID" << "Arrival Time" << "Burst Time" << "Priority";
     ui->tableWidget->setHorizontalHeaderLabels(hLabels);
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-
+    ui->tableWidget->verticalHeader()->setVisible(false);
     clearGranttTray();
 }
 MainWindow::~MainWindow()
@@ -140,20 +140,22 @@ void MainWindow::on_AddProcess_clicked()
     priority = ui->Priority->value();
     QuantumTime = ui->Quantum->value();
 
-    Process item = Process(counter++, arrivalTime, burstTime, priority);
+    Process item = Process(counter, arrivalTime, burstTime, priority);
     memory.push_back(item);
     ui->tableWidget->insertRow(row);
     QTableWidgetItem *tableItem;
-    for(int i = 0; i < 3; i++){
+    for(int i = 0; i < 4; i++){
         tableItem = new QTableWidgetItem;
-        if(i == 0) tableItem->setText(QString::number(item.getArrival_time()));
-        else if(i == 1) tableItem->setText(QString::number(item.getBurst_time()));
+        if(i == 0) tableItem->setText(QString::number(counter));
+        else if(i == 1) tableItem->setText(QString::number(item.getArrival_time()));
+        else if(i == 2) tableItem->setText(QString::number(item.getBurst_time()));
         else tableItem->setText(QString::number(item.getPriority()));
 
         tableItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
         ui->tableWidget->setItem(row, i, tableItem);
     }
     row++;
+    counter++;
 
     if(ui->comboBox->currentIndex() == 2) ui->Quantum->setEnabled(false);
     ui->AddProcess->setEnabled(false);
