@@ -122,10 +122,10 @@
                    </sizepolicy>
                   </property>
                   <property name="maximum">
-                   <double>999.990000000000009</double>
+                   <double>1000.000000000000000</double>
                   </property>
                   <property name="singleStep">
-                   <double>0.200000000000000</double>
+                   <double>0.100000000000000</double>
                   </property>
                  </widget>
                 </item>
@@ -165,10 +165,10 @@
                    </sizepolicy>
                   </property>
                   <property name="maximum">
-                   <double>999.990000000000009</double>
+                   <double>1000.000000000000000</double>
                   </property>
                   <property name="singleStep">
-                   <double>0.200000000000000</double>
+                   <double>0.100000000000000</double>
                   </property>
                  </widget>
                 </item>
@@ -254,10 +254,10 @@
                 <item>
                  <widget class="QDoubleSpinBox" name="Quantum">
                   <property name="maximum">
-                   <double>999.990000000000009</double>
+                   <double>1000.000000000000000</double>
                   </property>
                   <property name="singleStep">
-                   <double>0.200000000000000</double>
+                   <double>0.100000000000000</double>
                   </property>
                  </widget>
                 </item>
