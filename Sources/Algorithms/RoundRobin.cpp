@@ -2,13 +2,13 @@
 
 TimeLine RoundRobin::getTimeLine(vector<Process> processes, float quantumTime){
     TimeLine schedule = *(new TimeLine());
-    int len = processes.size();
-    int remaining = len;
-    int j = 0;
+    float len = processes.size();
+    float remaining = len;
+    float j = 0;
     float total_waiting_time = 0;
     float total_turnaround_time = 0;
-    queue<pair<Process, int>> jobQueue;
-    pair<Process, int> current;
+    queue<pair<Process, float>> jobQueue;
+    pair<Process, float> current;
     for(float time = 0; remaining > 0;){
         while(j < len && processes[j].getArrival_time() <= time){
             jobQueue.push({processes[j], processes[j++].getBurst_time()});

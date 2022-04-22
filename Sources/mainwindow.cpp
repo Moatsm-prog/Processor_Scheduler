@@ -53,7 +53,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_comboBox_currentIndexChanged(int index)
 {
 
-
+    counter = 1;
     ui->AddProcess->setEnabled(false);
     ui->Arrival->setValue(0.00);
     ui->Burst->setValue(0.00);
