@@ -61,6 +61,8 @@ void MainWindow::on_comboBox_currentIndexChanged(int index)
     ui->Quantum->setValue(0.00);
     ui->GanttChart->setEnabled(true);
     memory.clear();
+    ui->label_5->clear();
+    ui->label_7->clear();
     ui->tableWidget->clearContents();
     row = 0;
     ui->tableWidget->setRowCount(row);
