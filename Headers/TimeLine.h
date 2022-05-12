@@ -20,6 +20,8 @@ public:
 
     float calcWaiting();
 
+    bool equal(TimeLine);
+
     friend class ProcessTray;
 };
 
