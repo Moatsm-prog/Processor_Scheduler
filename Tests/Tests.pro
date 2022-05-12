@@ -14,6 +14,7 @@ INCLUDEPATH += \
 
 HEADERS += ../Headers/Process.h \
     ../Headers/Algorithms/Algorithm.h \
+    ../Headers/Algorithms/FCFS.h \
     ../Headers/Algorithms/NonPreemptive.h \
     ../Headers/Algorithms/Preemptive.h \
     ../Headers/Algorithms/Priority_NonPreemptive.h \
@@ -28,6 +29,7 @@ HEADERS += ../Headers/Exceptions/ProcessInvalidException.h
 
 SOURCES +=  tst_test1.cpp \
     ../Sources/Algorithms/Algorithm.cpp \
+    ../Sources/Algorithms/FCFS.cpp \
     ../Sources/Algorithms/NonPreemptive.cpp \
     ../Sources/Algorithms/Preemptive.cpp \
     ../Sources/Algorithms/Priority_NonPreemptive.cpp \

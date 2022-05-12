@@ -8,6 +8,7 @@
 #include "../Headers/Algorithms/Priority_Preemptive.h"
 #include "../Headers/Algorithms/SJF_NonPreemptive.h"
 #include "../Headers/Algorithms/Priority_NonPreemptive.h"
+#include "../Headers/Algorithms/FCFS.h"
 
 class Test1 : public QObject
 {
@@ -33,6 +34,7 @@ private slots:
     void test_Priority_Preemptive_valid();
     void test_SJF_NonPreemptive_valid();
     void test_Priority_NonPreemptive_valid();
+    void test_FCFS_valid();
 };
 
 Test1::Test1()
@@ -244,6 +246,32 @@ void Test1::test_Priority_NonPreemptive_valid(){
 
 }
 
+
+void Test1::test_FCFS_valid(){
+     std::vector<Process> processes;
+     Process p1 = Process(1 , 2.0 , 6.0);
+     Process p2 = Process(2 , 5.0 , 2.0);
+     Process p3 = Process(3 , 1.0 , 8.0);
+     Process p4 = Process(4 , 0.0 , 3.0);
+     Process p5 = Process(5 , 4.0 , 4.0);
+     processes.push_back(p1);
+     processes.push_back(p2);
+     processes.push_back(p3);
+     processes.push_back(p4);
+     processes.push_back(p5);
+     Algorithm *algo = new FCFS();
+     TimeLine scheduler;
+     scheduler = algo->applyAlgorithm(processes);
+     TimeLine result;
+     result.addProcess(p4 , 0.0 , 3.0);
+     result.addProcess(p3 , 3.0 , 11.0);
+     result.addProcess(p1 , 11.0 , 17.0);
+     result.addProcess(p5 , 17.0 , 21.0);
+     result.addProcess(p2 , 21.0 , 23.0);
+     bool actual = scheduler.equal(result);
+     QCOMPARE(actual , 1);
+
+}
 
 
 QTEST_APPLESS_MAIN(Test1)
