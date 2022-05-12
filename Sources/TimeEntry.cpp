@@ -14,3 +14,11 @@ float TimeEntry::getStart_time(){
 float TimeEntry::getEnd_time(){
     return end_time;
 }
+
+bool TimeEntry::equal(TimeEntry t){
+    if(this->process.equal(t.getProcess()) && this->start_time == t.getStart_time() && this->end_time == t.getEnd_time()){
+        return true;
+    } else {
+        return false;
+    }
+}

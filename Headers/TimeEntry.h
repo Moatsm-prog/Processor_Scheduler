@@ -14,6 +14,7 @@ public:
     Process getProcess();
     float getStart_time();
     float getEnd_time();
+    bool equal(TimeEntry);
 };
 
 #endif // TIME_ENTRY

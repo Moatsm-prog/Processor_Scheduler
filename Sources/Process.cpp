@@ -53,3 +53,6 @@ void Process::setBurst_time(float time) {
     burst_time = time;
 }
 
+bool Process::equal(Process p){
+    return (this->getProcess_id() == p.getProcess_id());
+}

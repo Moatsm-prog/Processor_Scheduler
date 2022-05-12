@@ -27,6 +27,8 @@ class Process {
         void setTurnaround_time(float time);
         void setBurst_time(float time);
 
+        bool equal(Process p);
+
 };
 
 #endif

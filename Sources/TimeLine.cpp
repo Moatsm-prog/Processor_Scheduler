@@ -51,3 +51,10 @@ float TimeLine::calcWaiting(){
 
 }
 
+bool TimeLine::equal(TimeLine tl){
+    if(tl.entries.size() != entries.size()) return 0;
+    for(int i = 0; i < entries.size(); i++){
+        if(!entries[i].equal(tl.entries[i])) return 0;
+    }
+    return 1;
+}
