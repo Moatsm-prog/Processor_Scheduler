@@ -14,7 +14,10 @@ INCLUDEPATH += \
 
 HEADERS += ../Headers/Process.h \
     ../Headers/Algorithms/Algorithm.h \
+    ../Headers/Algorithms/Preemptive.h \
+    ../Headers/Algorithms/Priority_Preemptive.h \
     ../Headers/Algorithms/RoundRobin.h \
+    ../Headers/Algorithms/SJF_Preemptive.h \
     ../Headers/Exceptions/QuantumInvalidException.h \
     ../Headers/TimeEntry.h \
     ../Headers/TimeLine.h
@@ -22,7 +25,10 @@ HEADERS += ../Headers/Exceptions/ProcessInvalidException.h
 
 SOURCES +=  tst_test1.cpp \
     ../Sources/Algorithms/Algorithm.cpp \
+    ../Sources/Algorithms/Preemptive.cpp \
+    ../Sources/Algorithms/Priority_Preemptive.cpp \
     ../Sources/Algorithms/RoundRobin.cpp \
+    ../Sources/Algorithms/SJF_Preemptive.cpp \
     ../Sources/Exceptions/QuantumInvalidException.cpp \
     ../Sources/TimeEntry.cpp \
     ../Sources/TimeLine.cpp
