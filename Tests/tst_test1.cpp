@@ -6,6 +6,9 @@
 #include "../Headers/Exceptions/QuantumInvalidException.h"
 #include "../Headers/Algorithms/SJF_Preemptive.h"
 #include "../Headers/Algorithms/Priority_Preemptive.h"
+#include "../Headers/Algorithms/SJF_NonPreemptive.h"
+#include "../Headers/Algorithms/Priority_NonPreemptive.h"
+
 class Test1 : public QObject
 {
     Q_OBJECT
@@ -28,6 +31,8 @@ private slots:
     void test_RoundRobin_invalid2();
     void test_SJF_Preemptive_valid();
     void test_Priority_Preemptive_valid();
+    void test_SJF_NonPreemptive_valid();
+    void test_Priority_NonPreemptive_valid();
 };
 
 Test1::Test1()
@@ -180,6 +185,60 @@ void Test1::test_Priority_Preemptive_valid(){
      result.addProcess(p2 , 13.0 , 14.0);
      result.addProcess(p5, 14.0 , 16.0);
      result.addProcess(p4 ,16.0 , 20.0);
+     bool actual = scheduler.equal(result);
+     QCOMPARE(actual , 1);
+
+}
+
+void Test1::test_SJF_NonPreemptive_valid(){
+     std::vector<Process> processes;
+     Process p1 = Process(1 , 2.0 , 6.0);
+     Process p2 = Process(2 , 5.0 , 2.0);
+     Process p3 = Process(3 , 1.0 , 8.0);
+     Process p4 = Process(4 , 0.0 , 3.0);
+     Process p5 = Process(5 , 4.0 , 4.0);
+     processes.push_back(p1);
+     processes.push_back(p2);
+     processes.push_back(p3);
+     processes.push_back(p4);
+     processes.push_back(p5);
+     Algorithm *algo;
+     TimeLine scheduler;
+     algo = new SJF_NonPreemptive();
+     scheduler = algo->applyAlgorithm(processes);
+     TimeLine result;
+     result.addProcess(p4 , 0.0 , 3.0);
+     result.addProcess(p1 , 3.0 , 9.0);
+     result.addProcess(p2 , 9.0 , 11.0);
+     result.addProcess(p5 , 11.0 , 15.0);
+     result.addProcess(p3, 15.0 , 23.0);
+     bool actual = scheduler.equal(result);
+     QCOMPARE(actual , 1);
+
+}
+
+void Test1::test_Priority_NonPreemptive_valid(){
+     std::vector<Process> processes;
+     Process p1 = Process(1 , 0.0 , 4.0 , 1);
+     Process p2 = Process(2 , 0.0 , 3.0 , 2);
+     Process p3 = Process(3 , 6.0 , 7.0 , 1);
+     Process p4 = Process(4 , 11.0 , 4.0 , 3);
+     Process p5 = Process(5 , 12.0 , 2.0 , 2);
+     processes.push_back(p1);
+     processes.push_back(p2);
+     processes.push_back(p3);
+     processes.push_back(p4);
+     processes.push_back(p5);
+     Algorithm *algo;
+     TimeLine scheduler;
+     algo = new Priority_NonPreemptive();
+     scheduler = algo->applyAlgorithm(processes);
+     TimeLine result;
+     result.addProcess(p1 , 0.0 , 4.0);
+     result.addProcess(p2 , 4.0 , 7.0);
+     result.addProcess(p3 , 7.0 , 14.0);
+     result.addProcess(p5 , 14.0 , 16.0);
+     result.addProcess(p4, 16.0 , 20.0);
      bool actual = scheduler.equal(result);
      QCOMPARE(actual , 1);
 
