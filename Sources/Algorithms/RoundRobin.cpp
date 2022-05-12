@@ -1,6 +1,14 @@
 #include "RoundRobin.h"
+#include "QuantumInvalidException.h"
+
+#include <string>
 
 TimeLine RoundRobin::getTimeLine(vector<Process> processes, float quantumTime){
+    if(quantumTime <= 0){
+        std::string msg = "Qunatum is Invalid" + std::to_string(quantumTime); 
+        throw QuantumInvalidException(msg.c_str());
+    }
+
     TimeLine schedule = *(new TimeLine());
     float len = processes.size();
     float remaining = len;
