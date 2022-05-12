@@ -12,7 +12,14 @@ public:
     ~Test1();
 
 private slots:
-    void test_case1();
+    void test_AddProcess1();
+    void test_AddProcess2();
+    void test_AddProcess3();
+    void test_AddProcess4();
+    void test_AddProcess5();
+    void test_AddProcess6();
+    void test_AddProcess7();
+
 
 };
 
@@ -26,10 +33,28 @@ Test1::~Test1()
 
 }
 
-void Test1::test_case1()
-{
+Test1::void test_AddProcess1(){
 
 }
+Test1::void test_AddProcess2(){
+
+}
+Test1::void test_AddProcess3(){
+
+}
+Test1::void test_AddProcess4(){
+
+}
+Test1::void test_AddProcess5(){
+
+}
+Test1::void test_AddProcess6(){
+
+}
+Test1::void test_AddProcess7(){
+
+}
+
 
 QTEST_APPLESS_MAIN(Test1)
 
