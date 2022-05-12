@@ -1,7 +1,21 @@
 #include "Process.h"
+#include "ProcessInvalidException.h"
+
+#include <string>
 
 Process::Process(int process_id, float arrival_time, float burst_time, int priority):
-            process_id(process_id), arrival_time(arrival_time), burst_time(burst_time), priority(priority) , total_burst_time(burst_time){}
+            process_id(process_id), arrival_time(arrival_time), burst_time(burst_time), priority(priority) , total_burst_time(burst_time){
+                if(arrival_time < 0){
+                    std::string msg = "Arrival time is invalid" + std::to_string(arrival_time); 
+                    throw ProcessInvalidException(msg.c_str());
+                } else if(burst_time <= 0){
+                    std::string msg = "Burst Time time is invalid" + std::to_string(burst_time); 
+                    throw ProcessInvalidException(msg.c_str());
+                } else if(priority < 0){
+                    std::string msg = "Priority is invalid" + std::to_string(priority); 
+                    throw ProcessInvalidException(msg.c_str());
+                }
+            }
 
 int Process::getProcess_id() const { 
     return process_id; 

@@ -11,7 +11,8 @@ CONFIG += c++11
 INCLUDEPATH += \
     Headers/ \
     Headers/Algorithms/ \
-    Headers/GanttChart/
+    Headers/GanttChart/ \
+    Headers/Exceptions
 
 SOURCES += $$files("Sources/*.cpp", true)
 
