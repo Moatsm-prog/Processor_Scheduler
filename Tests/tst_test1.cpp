@@ -27,7 +27,10 @@ private slots:
      void test_CreateProcess6();
      void test_CreateProcess7();
      void test_CreateProcess8();
-     void test_RoundRobin_valid();
+     void test_RoundRobin_valid1();
+     void test_RoundRobin_valid2();
+     void test_RoundRobin_valid3();
+     void test_RoundRobin_valid_no_processes();
      void test_RoundRobin_invalid1();
      void test_RoundRobin_invalid2();
      void test_SJF_Preemptive_valid();
@@ -96,7 +99,7 @@ void Test1::test_CreateProcess8()
      }
 }
 
-void Test1::test_RoundRobin_valid()
+void Test1::test_RoundRobin_valid1()
 {
      std::vector<Process> processes;
      Process p1 = Process(1, 0.0, 5.0);
@@ -117,6 +120,66 @@ void Test1::test_RoundRobin_valid()
      result.addProcess(p3, 7.0, 9.0);
      result.addProcess(p2, 9.0, 11.0);
      result.addProcess(p2, 11.0, 12.0);
+     bool actual = scheduler.equal(result);
+     QCOMPARE(actual, 1);
+}
+
+void Test1::test_RoundRobin_valid2()
+{
+     std::vector<Process> processes;
+     Process p1 = Process(1, 0.0, 1.0);
+     Process p2 = Process(2, 3.0, 5.0);
+     Process p3 = Process(3, 5.0, 2.0);
+     processes.push_back(p1);
+     processes.push_back(p2);
+     processes.push_back(p3);
+     Algorithm *algo;
+     TimeLine scheduler;
+     algo = new RoundRobin();
+     scheduler = algo->applyAlgorithm(processes, 2.0);
+     TimeLine result;
+     result.addProcess(p1, 0.0, 1.0);
+     result.addProcess(p2, 3.0, 5.0);
+     result.addProcess(p3, 5.0, 7.0);
+     result.addProcess(p2, 7.0, 9.0);
+     result.addProcess(p2, 9.0, 10.0);
+     bool actual = scheduler.equal(result);
+     QCOMPARE(actual, 1);
+}
+
+void Test1::test_RoundRobin_valid3()
+{
+     std::vector<Process> processes;
+     Process p1 = Process(1, 1.0, 1.0);
+     Process p2 = Process(2, 3.0, 5.0);
+     Process p3 = Process(3, 5.0, 2.0);
+     processes.push_back(p1);
+     processes.push_back(p2);
+     processes.push_back(p3);
+     Algorithm *algo;
+     TimeLine scheduler;
+     algo = new RoundRobin();
+     scheduler = algo->applyAlgorithm(processes, 2.0);
+     TimeLine result;
+     result.addProcess(p1, 1.0, 2.0);
+     result.addProcess(p2, 3.0, 5.0);
+     result.addProcess(p3, 5.0, 7.0);
+     result.addProcess(p2, 7.0, 9.0);
+     result.addProcess(p2, 9.0, 10.0);
+     bool actual = scheduler.equal(result);
+     QCOMPARE(actual, 1);
+}
+
+
+
+void Test1::test_RoundRobin_valid_no_processes()
+{
+     std::vector<Process> processes;
+     Algorithm *algo;
+     TimeLine scheduler;
+     algo = new RoundRobin();
+     scheduler = algo->applyAlgorithm(processes, 2.0);
+     TimeLine result;
      bool actual = scheduler.equal(result);
      QCOMPARE(actual, 1);
 }
